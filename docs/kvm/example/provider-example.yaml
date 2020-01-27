@@ -1,0 +1,3 @@
+kind: Provider.KVM
+spec:
+  url: "qemu:///system"

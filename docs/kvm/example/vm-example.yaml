@@ -1,0 +1,20 @@
+kind: VirtualMachine.KVM
+spec:
+  name: "k8s-master1"
+  pool: "vms"
+  user:
+    name: "root"
+    password: "rahasia"
+  spec:
+    ram: 512
+    vcpu: 1
+  network: 
+    name: "net-10.102.102"
+    interface: "ens3"
+    addresses: "10.102.102.240/24"
+    gateway: "10.102.102.1"
+    dns: "8.8.8.8"
+  imagePath: ""
+  
+  
+  
