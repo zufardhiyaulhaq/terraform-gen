@@ -3,9 +3,9 @@ package main
 import (
 	"os"
 	"log"
-	"fmt"
 	"io/ioutil"
-	// "yaml"
+	"gopkg.in/yaml.v2"
+	"github.com/zufardhiyaulhaq/terraform-config-generator/models"
 )
 
 func checkArgs() {
@@ -30,16 +30,24 @@ func isFileExist(filename string) {
 	}
 }
 
-
 func main() {
 	checkArgs()
 
 	file := os.Args[1]
 	isFileExist(file)
 
-	dat, _ := ioutil.ReadFile(file)
-	dat.asdas()
+	yamlTmpl, err := ioutil.ReadFile(file)
+	if err != nil {
+		panic(err)
+	  }
 	
-	// var kind models.Kind
-	// yaml.Unmarshal(yamlTmpl, &kind)
+	var k models.Kind
+	yaml.Unmarshal(yamlTmpl, &k)
+	
+	switch k.Kind {
+		case "VirtualMachine.KVM":
+			VirtualMachineKVM(yamlTmpl)
+		case "Provider.KVM":
+			ProviderKVM(yamlTmpl)
+	}
 }

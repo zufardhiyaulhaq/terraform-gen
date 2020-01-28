@@ -1,0 +1,9 @@
+version: 2
+ethernets:
+  {{ .Spec.Network.Interface }}:
+    dhcp4: false
+    dhcp6: false
+    addresses: [{{ .Spec.Network.Addresses }}]
+    gateway4: {{ .Spec.Network.Gateway }}
+    nameservers:
+      addresses: [{{ .Spec.Network.DNS }}]

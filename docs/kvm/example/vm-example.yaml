@@ -2,7 +2,7 @@ kind: VirtualMachine.KVM
 spec:
   name: "k8s-master1"
   pool: "vms"
-  user:
+  user: 
     name: "root"
     password: "rahasia"
   spec:
@@ -14,7 +14,7 @@ spec:
     addresses: "10.102.102.240/24"
     gateway: "10.102.102.1"
     dns: "8.8.8.8"
-  imagePath: ""
+  imagePath: "/root/ubuntu-16.04-server-cloudimg-amd64-disk1.img"
   
   
   

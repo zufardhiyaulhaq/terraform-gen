@@ -1,0 +1,58 @@
+resource "libvirt_volume" "{{ .Spec.Name }}_volume" {
+  name   = "{{ .Spec.Name }}"
+  pool   = {{ .Spec.Pool }}
+  source = "{{ .Spec.ImagePath }}"
+  format = "qcow2"
+}
+
+data "template_file" "{{ .Spec.Name }}_user_data" {
+  template = file("${path.module}/{{ .Spec.Name }}_cloud_init.cfg")
+}
+
+data "template_file" "{{ .Spec.Name }}_network_config" {
+  template = file("${path.module}/{{ .Spec.Name }}_network_config.cfg")
+}
+
+resource "libvirt_cloudinit_disk" "{{ .Spec.Name }}_commoninit" {
+  name           = "{{ .Spec.Name }}_commoninit.iso"
+  user_data      = data.template_file.{{ .Spec.Name }}_user_data.rendered
+  network_config = data.template_file.{{ .Spec.Name }}_network_config.rendered
+  pool           = {{ .Spec.Pool }}
+}
+
+resource "libvirt_domain" "{{ .Spec.Name }}" {
+  name = "{{ .Spec.Name }}
+  memory = "{{ .Spec.Spec.RAM }}"
+  vcpu = {{ .Spec.Spec.VCPU }}
+
+  cloudinit = "${libvirt_cloudinit_disk.{{ .Spec.Name }}_commoninit.id}"
+
+  network_interface {
+    network_name = "{{ .Spec.Network.Name }}"
+  }
+
+  console {
+    type        = "pty"
+    target_port = "0"
+    target_type = "serial"
+  }
+
+  console {
+      type        = "pty"
+      target_type = "virtio"
+      target_port = "1"
+  }
+
+  disk {
+       volume_id = "${libvirt_volume.{{ .Spec.Name }}_volume.id}"
+  }
+  graphics {
+    type = "spice"
+    listen_type = "address"
+    autoport = "true"
+  }
+}
+
+terraform {
+  required_version = ">= 0.12"
+}
