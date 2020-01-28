@@ -6,7 +6,6 @@ type VirtualMachineKVM struct {
 		Pool string `yaml:"pool"`
 		ImagePath string `yaml:"imagePath"`
 		User struct {
-			Name string `yaml:"name"`
 			Password string `yaml:"password"`
 		} `yaml:"user"`
 		Spec struct {

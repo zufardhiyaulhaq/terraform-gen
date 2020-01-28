@@ -3,7 +3,6 @@ spec:
   name: "k8s-master1"
   pool: "vms"
   user: 
-    name: "root"
     password: "rahasia"
   spec:
     ram: 512

@@ -1,6 +1,6 @@
 resource "libvirt_volume" "{{ .Spec.Name }}_volume" {
   name   = "{{ .Spec.Name }}"
-  pool   = {{ .Spec.Pool }}
+  pool   = "{{ .Spec.Pool }}"
   source = "{{ .Spec.ImagePath }}"
   format = "qcow2"
 }
@@ -17,11 +17,11 @@ resource "libvirt_cloudinit_disk" "{{ .Spec.Name }}_commoninit" {
   name           = "{{ .Spec.Name }}_commoninit.iso"
   user_data      = data.template_file.{{ .Spec.Name }}_user_data.rendered
   network_config = data.template_file.{{ .Spec.Name }}_network_config.rendered
-  pool           = {{ .Spec.Pool }}
+  pool           = "{{ .Spec.Pool }}"
 }
 
 resource "libvirt_domain" "{{ .Spec.Name }}" {
-  name = "{{ .Spec.Name }}
+  name = "{{ .Spec.Name }}"
   memory = "{{ .Spec.Spec.RAM }}"
   vcpu = {{ .Spec.Spec.VCPU }}
 

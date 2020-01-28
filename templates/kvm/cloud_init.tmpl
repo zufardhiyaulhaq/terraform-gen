@@ -1,5 +1,4 @@
+#cloud-config
+password: {{ .Spec.User.Password }}
+chpasswd: { expire: False }
 ssh_pwauth: True
-chpasswd:
-  list: |
-     {{ .Spec.User.Name }}:{{ .Spec.User.Password }}
-  expire: False
