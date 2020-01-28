@@ -33,6 +33,7 @@ type VirtualNetworkKVM struct {
 		Name string `yaml:"name"`
 		Mode string `yaml:"mode"`
 		Network string `yaml:"network"`
-		IsDHCPEnable string `yaml:"isdhcpenable"`
+		AutoStart bool `yaml:"autostart"`
+		IsDHCPEnable bool `yaml:"isdhcpenable"`
 	} `yaml:"spec"`
 }

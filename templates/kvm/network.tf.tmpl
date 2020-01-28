@@ -2,6 +2,7 @@ resource "libvirt_network" "{{ .Spec.Name }}" {
     name      = "{{ .Spec.Name }}"
     mode      = "{{ .Spec.Mode }}"
     domain    = "{{ .Spec.Name }}"
+    autostart = "{{ .Spec.autostart }}"
     addresses = ["{{ .Spec.Network }}"]
     dhcp {
         enabled = {{ .Spec.IsDHCPEnable }}

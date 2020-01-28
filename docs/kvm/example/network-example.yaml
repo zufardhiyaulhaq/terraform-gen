@@ -3,6 +3,7 @@ spec:
   name: "net-10.104.104"
   mode: "route"
   network: "10.104.104.0/24"
+  autostart: true
   isdhcpenable: false
   
   
