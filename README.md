@@ -1,5 +1,5 @@
-# Terraform Configuration Generator
-This repository help myself to generate spesific provider configuration files. The goals is to provide easy interface to generate terraform configuration.
+# terraform-gen
+This tools help generate spesific provider configuration files. The goals is to provide easy interface to generate terraform configuration.
 
 #### Currently support Provider
-- KVM
+- [KVM](https://github.com/zufardhiyaulhaq/terraform-gen/blob/master/docs/kvm/usage.md)

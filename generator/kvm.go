@@ -93,3 +93,27 @@ func VirtualMachineKVM(data []byte) {
 		panic(err)
 	}
 }
+
+func NetworkKVM(data []byte) {
+	// unmarshal data into struct
+	var spec models.NetworkKVM
+	var output bytes.Buffer
+	yaml.Unmarshal(data, &spec)
+
+	// Virtual Machine
+	tmplFile := "/usr/local/terraform-gen/templates/kvm/network.tf.tmpl"
+	tpl, err := template.ParseFiles(tmplFile)
+	if err != nil {
+		panic(err)
+	}
+	
+	err = tpl.Execute(&output, spec)
+	if err != nil {
+		panic(err)
+	}
+
+	err = ioutil.WriteFile("network.tf", output.Bytes(), 0644)
+	if err != nil {
+		panic(err)
+	}
+}

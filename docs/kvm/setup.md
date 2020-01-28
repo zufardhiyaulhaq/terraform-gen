@@ -1,5 +1,5 @@
-# Terraform Setup
-Install terraform inside your KVM server.
+# Golang & Terraform Setup
+Install golang & terraform inside your KVM server.
 - Install Development tools, libvirt-devel, & mkisofs
 ```
 yum groupinstall "Development Tools"

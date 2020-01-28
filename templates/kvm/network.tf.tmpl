@@ -1,0 +1,9 @@
+resource "libvirt_network" "{{ .Spec.Name }}" {
+    name      = "{{ .Spec.Name }}"
+    mode      = "{{ .Spec.Mode }}"
+    domain    = "{{ .Spec.Name }}"
+    addresses = ["{{ .Spec.Network }}"]
+    dhcp {
+        enabled = {{ .Spec.IsDHCPEnable }}
+    }
+}

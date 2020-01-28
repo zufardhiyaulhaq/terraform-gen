@@ -1,5 +1,8 @@
 kind: VirtualNetwork.KVM
 spec:
-  name:
+  name: "net-10.104.104"
+  mode: "route"
+  network: "10.104.104.0/24"
+  isdhcpenable: false
   
   

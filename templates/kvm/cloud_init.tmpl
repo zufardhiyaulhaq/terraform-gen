@@ -2,3 +2,5 @@
 password: {{ .Spec.User.Password }}
 chpasswd: { expire: False }
 ssh_pwauth: True
+lock_passwd: False
+sudo: ["ALL=(ALL) NOPASSWD:ALL"]

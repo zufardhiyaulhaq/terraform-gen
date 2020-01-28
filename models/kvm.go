@@ -27,3 +27,12 @@ type ProviderKVM struct {
 		URL string `yaml:"url"`
 	} `yaml:"spec"`
 }
+
+type NetworkKVM struct {
+	Spec struct {
+		Name string `yaml:"name"`
+		Mode string `yaml:"mode"`
+		Network string `yaml:"network"`
+		IsDHCPEnable string `yaml:"isdhcpenable"`
+	} `yaml:"spec"`
+}
