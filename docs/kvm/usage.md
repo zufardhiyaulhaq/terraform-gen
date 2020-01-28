@@ -1,6 +1,7 @@
 # KVM Usage
 Make sure you have following [setup tutorial](https://github.com/zufardhiyaulhaq/terraform-gen/blob/master/docs/kvm/setup.md) before using this.
 
+[![asciicast](https://asciinema.org/a/Al0P7qzOPr0vLZhmCdINl74pL.svg)](https://asciinema.org/a/Al0P7qzOPr0vLZhmCdINl74pL)
 ---
 After KVM & terraform is installed, you can generate terraform configuration with this tools.
 
