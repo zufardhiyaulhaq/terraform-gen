@@ -5,6 +5,6 @@ resource "libvirt_network" "{{ .Spec.Name }}" {
     autostart = "{{ .Spec.autostart }}"
     addresses = ["{{ .Spec.Network }}"]
     dhcp {
-        enabled = {{ .Spec.IsDHCPEnable }}
+        enabled = {{ .Spec.DHCPEnable }}
     }
 }

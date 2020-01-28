@@ -4,6 +4,6 @@ spec:
   mode: "route"
   network: "10.104.104.0/24"
   autostart: true
-  isdhcpenable: false
+  dhcpenable: false
   
   
