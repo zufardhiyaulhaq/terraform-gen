@@ -15,7 +15,7 @@ func ProviderKVM(data []byte) {
 	yaml.Unmarshal(data, &spec)
 
 	// Virtual Machine
-	tmplFile := "/usr/local/terraform-gen/templates/provider.tf.tmpl"
+	tmplFile := "/usr/local/terraform-gen/templates/kvm/provider.tf.tmpl"
 	tpl, err := template.ParseFiles(tmplFile)
 	if err != nil {
 		panic(err)
@@ -32,16 +32,14 @@ func ProviderKVM(data []byte) {
 	}
 }
 
-
 func VirtualMachineKVM(data []byte) {
 
-	// unmarshal data into struct
 	var spec models.VirtualMachineKVM
 	var output bytes.Buffer
 	yaml.Unmarshal(data, &spec)
 
 	// Virtual Machine
-	tmplFile := "/usr/local/terraform-gen/templates/virtual_machine.tf.tmpl"
+	tmplFile := "/usr/local/terraform-gen/templates/kvm/virtual_machine.tf.tmpl"
 	tpl, err := template.ParseFiles(tmplFile)
 	if err != nil {
 		panic(err)
@@ -57,10 +55,10 @@ func VirtualMachineKVM(data []byte) {
 		panic(err)
 	}
 
-	//loud Init
+	//Cloud Init
 	output.Reset()
 
-	tmplFile = "/usr/local/terraform-gen/templates/cloud_init.tmpl"
+	tmplFile = "/usr/local/terraform-gen/templates/kvm/cloud_init.tmpl"
 	tpl, err = template.ParseFiles(tmplFile)
 	if err != nil {
 		panic(err)
@@ -76,10 +74,10 @@ func VirtualMachineKVM(data []byte) {
 		panic(err)
 	}
 
-	//loud Init
+	//Network Config
 	output.Reset()
 
-	tmplFile = "/usr/local/terraform-gen/templates/network_config.tmpl"
+	tmplFile = "/usr/local/terraform-gen/templates/kvm/network_config.tmpl"
 	tpl, err = template.ParseFiles(tmplFile)
 	if err != nil {
 		panic(err)
@@ -94,5 +92,4 @@ func VirtualMachineKVM(data []byte) {
 	if err != nil {
 		panic(err)
 	}
-
 }
