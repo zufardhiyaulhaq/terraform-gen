@@ -49,5 +49,7 @@ func main() {
 			VirtualMachineKVM(yamlTmpl)
 		case "Provider.KVM":
 			ProviderKVM(yamlTmpl)
+		case "VirtualNetwork.KVM":
+			VirtualNetworkKVM(yamlTmpl)
 	}
 }

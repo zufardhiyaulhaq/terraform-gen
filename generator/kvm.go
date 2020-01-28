@@ -94,9 +94,9 @@ func VirtualMachineKVM(data []byte) {
 	}
 }
 
-func NetworkKVM(data []byte) {
+func VirtualNetworkKVM(data []byte) {
 	// unmarshal data into struct
-	var spec models.NetworkKVM
+	var spec models.VirtualNetworkKVM
 	var output bytes.Buffer
 	yaml.Unmarshal(data, &spec)
 

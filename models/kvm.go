@@ -28,7 +28,7 @@ type ProviderKVM struct {
 	} `yaml:"spec"`
 }
 
-type NetworkKVM struct {
+type VirtualNetworkKVM struct {
 	Spec struct {
 		Name string `yaml:"name"`
 		Mode string `yaml:"mode"`
