@@ -1,5 +1,6 @@
 #cloud-config
 password: {{ .Spec.User.Password }}
+hostname: {{ .Spec.Name }}
 chpasswd: { expire: False }
 ssh_pwauth: True
 lock_passwd: False
