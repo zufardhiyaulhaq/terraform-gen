@@ -3,6 +3,7 @@ resource "libvirt_volume" "{{ .Spec.Name }}_volume" {
   pool   = "{{ .Spec.Pool }}"
   source = "{{ .Spec.ImagePath }}"
   format = "qcow2"
+  size = "{{ .Spec.Size }}"
 }
 
 data "template_file" "{{ .Spec.Name }}_user_data" {

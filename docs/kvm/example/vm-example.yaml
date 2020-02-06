@@ -14,6 +14,7 @@ spec:
     gateway: "10.102.102.1"
     dns: "8.8.8.8"
   imagePath: "/root/ubuntu-16.04-server-cloudimg-amd64-disk1.img"
+  size: "100000000000" #100 GB (in bytes)
   
   
   

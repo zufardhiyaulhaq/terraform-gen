@@ -5,6 +5,7 @@ type VirtualMachineKVM struct {
 		Name string `yaml:"name"`
 		Pool string `yaml:"pool"`
 		ImagePath string `yaml:"imagePath"`
+		Size string `yaml:"size"`
 		User struct {
 			Password string `yaml:"password"`
 		} `yaml:"user"`
