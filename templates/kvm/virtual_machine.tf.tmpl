@@ -6,7 +6,7 @@ resource "libvirt_volume" "{{ .Spec.Name }}_volume" {
 }
 
 resource "libvirt_volume" "{{ .Spec.Name }}_volume_resize" {
-  name           = "disk"
+  name           = "{{ .Spec.Name }}_disk"
   base_volume_id = libvirt_volume.{{ .Spec.Name }}_volume.id
   pool           = "{{ .Spec.Pool }}"
   size = "{{ .Spec.Size }}"
