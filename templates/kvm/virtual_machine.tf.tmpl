@@ -3,6 +3,12 @@ resource "libvirt_volume" "{{ .Spec.Name }}_volume" {
   pool   = "{{ .Spec.Pool }}"
   source = "{{ .Spec.ImagePath }}"
   format = "qcow2"
+}
+
+resource "libvirt_volume" "{{ .Spec.Name }}_volume_resize" {
+  name           = "disk"
+  base_volume_id = libvirt_volume.{{ .Spec.Name }}_volume.id
+  pool           = "{{ .Spec.Pool }}"
   size = "{{ .Spec.Size }}"
 }
 
@@ -45,7 +51,7 @@ resource "libvirt_domain" "{{ .Spec.Name }}" {
   }
 
   disk {
-       volume_id = "${libvirt_volume.{{ .Spec.Name }}_volume.id}"
+       volume_id = "${libvirt_volume.{{ .Spec.Name }}_volume_resize.id}"
   }
   graphics {
     type = "spice"
